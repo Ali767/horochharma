@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>نطق الأحرف · السويدية للمبتدئين</title>
+<meta name="description" content="دروس تفاعلية مجانية لتعلّم نطق الأحرف السويدية للمبتدئين العرب: الأحرف الصوتية الطويلة والقصيرة، الأصوات المتشابهة، الحروف الساكنة وتمارين الاستماع. استماع وتكرار، ألعاب، تدريب على النطق واختبارات.">
+<meta property="og:title" content="نطق الأحرف · السويدية للمبتدئين">
+<meta property="og:description" content="دروس تفاعلية لتعلّم نطق الأحرف السويدية للمبتدئين العرب.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="crumb"><a href="https://alisaleem.com/" id="homeLink">السويدية للمبتدئين</a><span>‹</span><span>نطق الأحرف</span></div>
+  <h1><span class="sv">Uttal</span> · نطق الأحرف السويدية <span class="flag"></span></h1>
+  <p>دروس تفاعلية للمبتدئين العرب: اسمع، كرّر، اكتب، انطق، العب، واختبر نفسك.</p>
+  <div class="bigl" aria-hidden="true">Å Ä Ö</div>
+</div></header>
+
+<main class="wrap">
+  <div class="card hero-intro" style="box-shadow:var(--shadow)">
+    <div class="overall"><b style="white-space:nowrap">تقدّمك:</b><div class="meter"><i id="ovBar" style="background:var(--green)"></i></div><b class="score" id="ovTxt" dir="ltr">0 / 0</b></div>
+    <div class="row" style="margin-top:12px" id="resume"></div>
+  </div>
+
+  <div class="card">
+    <h3>طريقة التعلّم في كل درس</h3>
+    <div class="method">
+      <div><b>💡</b>افهم كيف يخرج الصوت</div>
+      <div><b>🦜</b>اسمع وكرّر بعد المتحدث</div>
+      <div><b>✍️</b>اكتب ما تسمعه</div>
+      <div><b>🗣️</b>انطق وسجّل صوتك</div>
+      <div><b>🎮</b>العب لتدرّب أذنك</div>
+      <div><b>🎯</b>اختبر نفسك</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>الأحرف الصوتية التسعة في السويدية</h3>
+    <p class="note" style="margin-top:0">لكل حرف صوتي نطقان: <span class="vL sv">طويل</span> و<span class="vS sv">قصير</span>. الأحرف الصلبة (بإطار أزرق) والليّنة (بإطار برتقالي) تغيّر نطق g و k و sk قبلها. اضغط على أي حرف لتفتح درسه.</p>
+    <div class="vchart" id="vchart"></div>
+  </div>
+
+  <div id="units"></div>
+
+  <div class="card">
+    <h3>نصائح قبل أن تبدأ</h3>
+    <div class="tips">
+      <div class="tip"><div class="ic">🎧</div><div>استعمل سماعات الأذن لتسمع الفرق الدقيق بين الأصوات.</div></div>
+      <div class="tip"><div class="ic">🌐</div><div>تمرين «انطق الآن» يعمل في متصفح <b>Google Chrome</b> أو <b>Microsoft Edge</b>، ويطلب إذن الميكروفون في أول مرة.</div></div>
+      <div class="tip"><div class="ic">🐢</div><div>ابدأ بسرعة 0.6× ثم ارفعها تدريجيًا حتى 1×.</div></div>
+      <div class="tip"><div class="ic">📅</div><div>10 دقائق يوميًا أفضل من ساعتين مرة في الأسبوع. درس واحد في اليوم يكفي.</div></div>
+    </div>
+  </div>
+  <footer>التسجيلات الصوتية من مادة «Hör och härma» · الشرح والتمارين: علي سليم · ICDL for All<br>تقدّمك محفوظ في متصفحك فقط.</footer>
+</main>
+
+<script src="assets/lessons.js"></script>
+<script>
+(function(){
+  const $=s=>document.querySelector(s);
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+  const pad=n=>String(n).padStart(2,"0");
+  const L=window.LESSONS||[], U=window.UNITS||[];
+  const VOW=[["a",4,"hard","آ عميقة"],["o",7,"hard","و"],["u",8,"hard","بين و و ي"],["å",10,"hard","أو"],["e",5,"soft","إي/إيه"],["i",6,"soft","ي"],["y",9,"soft","ي مدوّرة"],["ä",11,"soft","إيه مفتوحة"],["ö",12,"soft","إيه مدوّرة"]];
+  $("#vchart").innerHTML=VOW.map(v=>`<a class="vk ${v[2]}" href="lessons/${pad(v[1])}.html"><b>${v[0].toUpperCase()}</b><small>${v[3]}</small></a>`).join("");
+  let done=0;
+  $("#units").innerHTML=U.map(u=>{
+    const ls=L.filter(l=>l.u===u.id); if(!ls.length)return "";
+    return `<div class="unit"><h2>${esc(u.ar)} <span class="sv note" style="font-weight:600">· ${esc(u.sv)}</span></h2><p>${esc(u.desc)}</p></div>
+    <div class="lgrid">${ls.map(l=>{
+      const best=get("svp:best:"+l.n), seen=get("svp:seen:"+l.n);
+      if(best!==null&&+best>=70)done++;
+      const st=best!==null?`${best}%`:seen?"👀":"";
+      return `<a class="lc${best!==null&&+best>=70?" done":""}" href="lessons/${pad(l.n)}.html"><span class="num">${l.n}</span><span class="t"><b>${esc(l.sv)}</b><span>${esc(l.ar)}</span></span><span class="st" title="${best!==null?"أفضل نتيجة في الاختبار":"فتحته من قبل"}">${st}</span></a>`;
+    }).join("")}</div>`;
+  }).join("");
+  $("#ovTxt").textContent=done+" / "+L.length;
+  $("#ovBar").style.width=(L.length?done/L.length*100:0)+"%";
+  const next=L.find(l=>!(+get("svp:best:"+l.n)>=70))||L[0];
+  if(next)$("#resume").innerHTML=`<a class="btn y" style="text-decoration:none" href="lessons/${pad(next.n)}.html">${done?"تابع":"ابدأ"} من الدرس ${next.n}: <span class="sv">${esc(next.sv)}</span> ←</a><span class="note">الدرس مكتمل عندما تحصل على 70٪ أو أكثر في اختباره.</span>`;
+})();
+</script>
+</body>
+</html>
