@@ -1,4 +1,4 @@
-/* Swedish pronunciation lessons engine — ICDL for All / alisaleem.com
+/* Swedish pronunciation lessons engine — ICDL for All / ali-saleem.com
    Each lesson page calls LESSON({...}) with its data. */
 (function(){
 "use strict";
